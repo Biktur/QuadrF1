@@ -1,0 +1,124 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage{mathtools, amssymb, amsfonts, amsthm}
+\usepackage{tikz-cd}
+
+\newtheorem*{theorem}{Теорема}
+\newtheorem*{corollary}{Следствие}
+\newtheorem*{lemma}{Лемма}
+\newtheorem*{statement}{Утверждение}
+\newtheorem*{proposition}{Предложение}
+\theoremstyle{definition}
+\newtheorem*{definition}{Определение}
+\theoremstyle{remark}
+\newtheorem*{reminder}{Напоминание}
+\newtheorem*{remark}{Замечание}
+\newtheorem*{example}{Пример}
+\newtheorem{problem}{Задача}
+
+\DeclareMathOperator{\chr}{chr}
+\DeclareMathOperator{\disc}{disc}
+%\newcommand{}{}
+
+\title{Квадратичные формы над полями}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+Список литературы:
+
+\begin{enumerate}
+    \item \foreignlanguage{english}{Lam. Introduction to quadratic forms over fields.}
+    \item \foreignlanguage{english}{Scharlau. Quadratic and Hermitian forms}
+    \item \foreignlanguage{english}{Elman, Karpenko, Merkurjev. The algebraic and geometric theory of quadratic forms.}
+    \item \foreignlanguage{english}{Serre. A course in arithmetic.}
+    \item Шафаревич. Теория чисел.
+    \item Касселс. Рациональные квадратичные формы.
+\end{enumerate}
+
+\begin{definition}
+$F$ --- поле, $\chr F \neq 2$, $V/ F$ --- конечномерное векторное пространство. Отображение $q: V \longrightarrow F$ называется квадратичной формой, если 
+\begin{gather*}
+q(av) = a^2 q(v) \\
+B(u, v) = \frac 1 2 (q(u + v) - q(u) - q(v))\text{ --- билинейная форма}
+\end{gather*}
+\end{definition}
+
+Нетрудно заметить, что существуеут взаимнооднозначное соответсвие между квадратичными формами и билинейными симметричными формами.
+
+Пусть $e_1, e_2, \ldots, e_n$ --- базис $V$. Тогда 
+
+$$q(x_1e_1 + x_2 e_2 + \ldots + x_n e_n) = \sum B(e_i, e_j)x_ix_j$$
+
+Матрица $(B(e_i, e_j))$ называется матрицой квадратичной формы $q$ в базисе $\{e_i\}$. Нетрудно видеть, что при замене базиса $A \rightsquigarrow S^T A S$, так что $\det q \in F^* / F^{*2}$ не зависит от выбора базиса.
+
+Квадратичная форма задаёт линейное отображение в двойственное пространство.
+
+$$f: V \rightarrow V^*: v \rightarrow (u \mapsto B(u, v))$$
+
+\begin{proposition}
+    $f$ --- изоморфизм тогда и только тогда, когда $B$ невырождена.
+\end{proposition}
+
+\begin{definition}
+    $q$ называется изотропной, если существует ненулевой вектор $v$ такой, что $q(v) = 0$. В противном случае $q$ называется анизотропной.
+\end{definition}
+
+\begin{definition}
+    Пусть $(V_1, q_1)$, $(V_2, q_2)$ --- пространства с квадратичными формами. Тогда на $V_1 \oplus V_2$ определена квадратичная форма $q_1 \bot q_2(v_1, v_2) := q_1(v_1) + q_2(v_2)$.
+\end{definition}
+
+\begin{definition}
+    Аналогично на $V_1 \otimes V_2$ определена квадратчиная форма $q_1 \otimes q_2(v_1 \otimes v_2) = q_1(v_1) q_2(v_2)$.
+\end{definition}
+
+\begin{definition}
+    Формы $q_1$ и $q_2$ называются изоморфными если существует изоморфизм $f: V_1 \rightarrow V_2$ такой, что $q_1(v_1) = q_2(f(v_1))$.
+\end{definition}
+
+\begin{theorem}[Теорема о сокращении]
+    Если $f_1 \bot g \simeq f_2 \bot g$, то и $f_1 \simeq f_2$.
+\end{theorem}
+
+\begin{theorem}
+    Пусть $V_0 \subset V$ --- подпространство, $q_0 = q|V$ --- подформа формы $q$. Если $q_0$ невырождена, то $q \simeq q_0 \bot q_1$.
+\end{theorem}
+\begin{proof}
+    $V_0^\bot = \{v \in V | B_q(v, v_0) = 0 \forall v_0 \in V_0\}$
+    Тогда $V_0^\bot \cap V_0 = 0$. Ну действительно, пусть $u$ лежит в пересечении, тогда $B(u, v_0) = 0$ для любого $v_0 \in v$, но тогда образ $u$ в $V_0^*$ равен нулю, значит, т. к. $q_0$ невырождена, $u = 0$.
+    Остаётся заметить, что существует точная последовательность
+    \begin{equation*}
+    \begin{tikzcd}
+    0 \rar & V_0^\bot \rar & V \rar & V_0^*
+    \end{tikzcd}
+    \end{equation*}
+    Значит $\dim V = \dim V_0^* + \dim V_0^\bot = \dim V_0 + \dim V_0^\bot$, а значит $V = V_0 \oplus V_0^\bot$.
+\end{proof}
+
+\begin{definition}
+    Кольцо Витта $W(F)$. Пусть $f_1$, $f_2$ --- невырожденные квадратичные формы, если существуют $m, n \geq 0$ такие, что $f_1 \bot mH \simeq f_2 \bot nH$, где $H = \langle 1, -1 \rangle$ --- гиперболическая плоскость.
+    $$[f] + [g] = [f \bot g]$$
+    $$[f] \otimes [g] = [f \otimes g]$$
+\end{definition}
+
+$W(F) \supset I(F)$ --- идеал классов чётномерных форм.
+
+$W(F) \supset I(F) \supset I^2(F) \supset \ldots$
+
+Вопросы:
+\begin{enumerate}
+    \item $\cap I^k(F) = 0$
+    \item $I^n(F) / I^{n + 1} = \,?$
+\end{enumerate}
+
+$$I(F) \rightarrow F^* / F^{*2}$$
+$$\disc f := (-1)^{\frac{n(n - 1)}{2}}$$
+
+\begin{statement}
+    $\ker \disc = I^2(F)$
+\end{statement}
+
+\end{document}
