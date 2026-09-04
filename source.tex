@@ -19,7 +19,9 @@
 
 \DeclareMathOperator{\chr}{chr}
 \DeclareMathOperator{\disc}{disc}
-%\newcommand{}{}
+
+\newcommand{\llangle}{\langle \hspace{-.5mm} \langle}
+\newcommand{\rrangle}{\rangle \hspace{-.5mm} \rangle}
 
 \title{Квадратичные формы над полями}
 \author{}
@@ -120,5 +122,13 @@ $$\disc f := (-1)^{\frac{n(n - 1)}{2}}$$
 \begin{statement}
     $\ker \disc = I^2(F)$
 \end{statement}
+
+\begin{definition}
+    Пусть $\varphi$ --- форма, $D(\varphi) \subset F^*$ --- множество ненулевых значений $\varphi$. $G(\varphi) = \{a \in F^*| \varphi \simeq a \varphi\}$. $G(\varphi)$, очевидно, является подгруппой. Если $1 \in D(\varphi)$, $G(\varphi) \subset D(\varphi)$
+\end{definition}
+
+\begin{definition}
+    Формой Пфистера называется форма $\llangle a_1, a_2, \ldots, a_n \rrangle := \langle 1, -a_1 \rangle \otimes \langle 1, -a_2 \rangle \otimes \langle 1, -a_3 \rangle \otimes \ldots \otimes \langle 1, -a_n \rangle$.
+\end{definition}
 
 \end{document}
