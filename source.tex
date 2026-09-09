@@ -3,6 +3,7 @@
 \usepackage[english, russian]{babel}
 \usepackage{mathtools, amssymb, amsfonts, amsthm}
 \usepackage{tikz-cd}
+\usepackage{enumitem}
 
 \newtheorem*{theorem}{Теорема}
 \newtheorem*{corollary}{Следствие}
@@ -22,6 +23,7 @@
 
 \newcommand{\llangle}{\langle \hspace{-.5mm} \langle}
 \newcommand{\rrangle}{\rangle \hspace{-.5mm} \rangle}
+\newcommand{\Z}{\mathbb{Z}}
 
 \title{Квадратичные формы над полями}
 \author{}
@@ -134,5 +136,91 @@ $$\disc f := (-1)^{\frac{n(n - 1)}{2}}$$
 \begin{definition}
     $u(F)$ --- максимальная размерность анизотропной квадратчиной формы над $F$.
 \end{definition}
+
+$$I \xrightarrow{disc} F^* / F^{*2}$$
+
+\begin{proposition}
+    $\ker \disc = I^2(F)$
+\end{proposition}
+\begin{proof}
+    Вложение $I^2 \subset \ker \disc$ очевидно. В обратную сторону $\langle a_1, a_2, \ldots, a_2m \rangle = \langle a_1, a_2, a_3, a_1a_2a_3 \rangle \oplus \langle -a_1a_2a_3, a_4, a_5, \ldots, a_{2m} \rangle$. Первое слагаемое, очевидно лежит в $I^2$, второе имеет размерность на 2 меньше, доказательство завершается индукцией.
+\end{proof}
+
+\begin{definition}
+    Для любого поля определим $K_0F = \Z$, $K_1 F = F^*$. Для $n \geq 2$ рассмотирим свободную абелеву группу, образующие которой наборы вида $\{a_1, a_2, \ldots, a_n\}$, где $a_i \in F^*$. На этой группе задаются следующие соотношения:
+    \begin{enumerate}[wide, label = \arabic*)]
+        \item $\{a_1, a_2, \ldots, a_{i-1}, a_ia'_i, a_{i + 1}, \ldots, a_n\} = \{a_1, a_2, \ldots, a_{i - 1}, a_i, a_{i + 1}, \ldots, a_n\} + \{a_1, a_2, \ldots, a_{i - 1}, a'_i, a_{i + 1}, \ldots, a_n\}$.
+        \item $\{\ldots, a, \ldots, 1 - a, \ldots\} = 0$
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    $\{a, -a\} = 0$, $\{a, b\} = \{b, a\}$.
+\end{proposition}
+\begin{proof}
+    $$0 = \{a^{-1}, 1 - a^{-1}\} = \{a^{-1}, \frac{a - 1}{a}\} = -\{a, \frac{a - 1}{a}\} = -(\{a, 1 - a\} - \{a, -a\}) = \{a, -a\}$$
+    $$0 = \{ab, -ab\} = \{a, -ab\} + \{b, -ab\} = \{a, -a\} + \{a, b\} + \{b, a\} + \{b, b\}$$
+\end{proof}
+
+\begin{definition}
+    $k_2(F) := K_2(F) / 2$
+\end{definition}
+
+\begin{proposition}
+    $I^2(F) / I^3(F) \simeq k_2(F)$
+\end{proposition}
+\begin{proof}
+    $K_2(F) \rightarrow I^2(F) / I^3(F)$ устроен следующим образом: $\{a, b\} \rightarrow \llangle a, b \rrangle (\mod I^3)$.
+
+    $\{a, 1 - a\} \mapsto \llangle a, 1 - a \rrangle = \langle 1, -a, a - 1, a(1 - a)\rangle$
+
+    $\{ab, c\} - \{a, c\} - \{b, c\} \rightarrow \llangle ab, c \rrangle - \llangle a, c \rrangle - \llangle b, c \rrangle = \langle 1, -ab, -c, abc, -1, a, c, -ac, -1, b, c, -bc \rangle = -\langle1, -a, -b, -c, ab, ac, bc, -abc\rangle = - \llangle a, b, c \rrangle$
+
+    Определим отображение в обратную сторону
+    
+    $f = \langle a_1, a_2, \ldots, a_n \rangle, \disc f = 1$
+
+    $\langle a_1, a_2, \ldots, a_n \rangle \rightsquigarrow \sum \{a_i, a_j\} =: \chi(f)$
+
+    $f \mapsto \chi(f) + \frac{m(m - 1)}{2} \{-1, -1\}$, где $m = \frac{n}{2}$.
+
+    Проверим корректность. Пусть $\langle a_1, a_2, \ldots, a_n\rangle \simeq \langle b_1, b_2, \ldots, b_n \rangle$, тогда $b_1 = a_1x_1^2 + a_2 x_2^2 + \ldots + a_n x_n^2$, причём можно считать, что частичные суммы не равны 0. Тогда можно построить следующую цепочку изоморфизмов: $\langle a_1, a_2, \ldots, a_n \rangle \simeq \langle a_1 x_1^2 + a_2 x_2^2, *, \ldots, a_n \rangle \simeq \ldots \simeq \langle b_1, *, \ldots, * \rangle$. Далее теорема о сокращении. Мы получили, что корректность достаточно проверять для форм отличающихся в двух элементах.
+
+    Пусть $\langle a_1, a_2, a_3, \ldots, a_n\rangle \simeq \langle b_1, b_2, a_3, \ldots, a_n \rangle$. Требуется доказать, что $\{a_1, a_2\} + \{a_1a_2, \prod_{i \geq 3} a_i\} = \{b_1, b_2\} + \{b_1b_2, \prod_{i \geq 3} a_i\}$, но вторые слагаемые не отличаются по модулю квадратов, т. к. детерминанты форм равны по модулю квадратов
+    
+    Остаётся доказать, что если $\langle a_1, a_2 \rangle \simeq \langle b_1, b_2 \rangle$, то $\{ a_1, a_2 \} \simeq \{ b_1, b_2 \}$.
+    
+    $b_1 = a_1 x^2 + a_2 y^2$
+
+    $b_2 = a_1a_2(a_1 x^2 + a_2 y^2)$
+
+    $\{a_1x^2 + a_2y^2, a_1a_2(a_1 x^2 + a_2 y^2)\} = \{a_1x^2 + a_2y^2, -a_1a_2\} = \{a_1\left(x^2 + \frac{a_2}{a_1} y^2\right), -a_1a_2\} = \{a_1, -a_1a_2\} + \{x^2 + \frac{a_2}{a_1} y^2, -a_1a_2\} = \{a_1, a_2\} + \{x^2 + \frac{a_2}{a_1} y^2, -\frac{a_2}{a_1}\} = \{a_1, a_2\} + \{x^2 + \frac{a_2}{a_1} y^2, -\frac{a_2}{a_1}y^2\} = \{a_1, a_2\} + \{1 + \frac{a_2}{a_1} \frac{y^2}{x^2}, -\frac{a_2}{a_1}\frac{y^2}{x^2}\} = \{a_1, a_2\}$.
+
+    Нетрудно убедиться, что образ также не зависит от представителя класса.
+
+    $f \simeq \langle a_1, a_2, \ldots, a_n \rangle$
+
+    $g \simeq \langle b_1, b_2, \ldots, b_l \rangle$
+
+    $n = 2m, l = 2k$
+    Хотим проверить, что
+    
+    $\chi(f) + \chi(g) + \left(\frac{m(m - 1)}{2} + \frac{k(k - 1)}{2}\right)\{-1, -1\} = \chi(f \oplus g) + \frac{(m + k)(m + k + 1)}{2}\{-1, 1\}$
+
+    $\chi(f \oplus g) = \chi(f) + \chi(g) + \{\prod a_i, \prod b_j\} = \chi(f) + \chi(g) + mk\{-1, -1\}$
+
+    Нетрудно видеть, что
+
+    $\frac{m(m-1)}{2} + \frac{k(k - 1)}{2} + mk = \frac{(m + k)(m + k + 1)}{2}$
+
+    Нетрудно также понять, что $\chi(\llangle a, b \rrangle) = \chi(c\llangle a, b \rrangle)$.
+
+    $\llangle a, b \rrangle = \langle 1, -a, -b, ab \rangle \mapsto \{-1, -1\} + \{-a, -b\} + \{-a, ab\} + \{-b, ab\} = \{-1, -1\} + \{-a, -1\} + \{-b, a\} = \{a, -1\} + \{-b, a\} = \{a, b\}$
+\end{proof}
+
+ \begin{theorem}
+    $K_nF / 2 \simeq I^n / I^{n - 1}(F)$.
+\end{theorem}
+
 
 \end{document}
