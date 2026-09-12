@@ -4,6 +4,9 @@
 \usepackage{mathtools, amssymb, amsfonts, amsthm}
 \usepackage{tikz-cd}
 \usepackage{enumitem}
+\usepackage{array}
+
+\newcolumntype{C}{>{$}c<{$}}
 
 \newtheorem*{theorem}{Теорема}
 \newtheorem*{corollary}{Следствие}
@@ -20,6 +23,7 @@
 
 \DeclareMathOperator{\chr}{chr}
 \DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\cnt}{Z}
 
 \newcommand{\llangle}{\langle \hspace{-.5mm} \langle}
 \newcommand{\rrangle}{\rangle \hspace{-.5mm} \rangle}
@@ -222,5 +226,33 @@ $$I \xrightarrow{disc} F^* / F^{*2}$$
     $K_nF / 2 \simeq I^n / I^{n - 1}(F)$.
 \end{theorem}
 
+\begin{definition}
+    $F$ --- поле, $\chr F \neq 2$, $a, b \in F^*$. Алгебра кватернионов $(a, b)$ как векторное пространство имеет базис $1, i, j, k$, на котором задана следующая таблица умножения:
+    \begin{table}[h!]
+        \begin{tabular}{C|C|C|C|C}
+            & 1 & i & j & k \\ \hline
+            1 & 1 & i & j & k \\ \hline
+            i & i & a & k & aj \\ \hline
+            j & j & -k & b & -bi \\ \hline
+            k & k & -aj & bi & -ab
+        \end{tabular}
+    \end{table}
+\end{definition}
+
+\begin{definition}
+    Алгебра $A$ над полем $F$ называется центральной, если $\cnt(A) = F$.
+\end{definition}
+
+\begin{definition}
+    $A$ называется простой, если у $A$ нет нетривиальных собственных простых идеалов.
+\end{definition}
+
+\begin{statement}
+    Если $A, B$ --- центральные простые, то $A \otimes B$ --- центральная простая.
+\end{statement}
+
+\begin{definition}
+    $Q_1 \otimes Q_2$ --- бикватернионная.
+\end{definition}
 
 \end{document}
