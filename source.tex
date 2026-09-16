@@ -28,6 +28,8 @@
 \newcommand{\llangle}{\langle \hspace{-.5mm} \langle}
 \newcommand{\rrangle}{\rangle \hspace{-.5mm} \rangle}
 \newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\m}{\mathfrak{m}}
 
 \title{Квадратичные формы над полями}
 \author{}
@@ -254,5 +256,71 @@ $$I \xrightarrow{disc} F^* / F^{*2}$$
 \begin{definition}
     $Q_1 \otimes Q_2$ --- бикватернионная.
 \end{definition}
+
+Пусть $L / F$ --- расширение полей, $(q, V)$ --- форма над $F$, тогда, если $V_L := L \otimes_F V$, $q_L(\ell \otimes v) = \ell^2 q(v)$ --- квадратичная форма на $V_L$.
+
+\begin{equation*}
+\begin{tikzcd}
+    0 \rar & W(L/F) \rar & W(F) \rar{res} & W(L)
+\end{tikzcd}
+\end{equation*}
+
+\begin{example}
+    $W(F(\sqrt{d}) / F) = \llangle -d \rrangle W(F)$, по одной из задач.
+\end{example}
+
+\begin{theorem}
+    Пусть $L / F$ --- конечное расширение нечётной степени, $q / F$ анизотропна, тогда $q_L$ анизотропна.
+\end{theorem}
+\begin{proof}
+    Докажем индукцие по степени, база очевидна. Рассмотрим два случая:
+    \begin{enumerate}[nosep, wide, label = \arabic*)]
+        \item $L / F$ не порождается одним элементом. Тогда раскладывается в промежуточные расширения меньшей степени.
+        \item $L = F(\alpha)$, $p(\alpha) = 0$, $2 \nmid \deg p$, $p$ неприводим над $F$. Тогда
+        $$L \simeq F[x]/(p(x)),$$
+        Т. е. $a_1 f_1^2 + a_2 f_2^2 + \ldots + a_n f_m = ph$, из анизотропности $q$, $2 \nmid \deg h$. Пусть $h_1$ неприводимый делитель $h$ нечётной степени, т. к. $\deg f_i < \deg p$, $\deg h_1 < \deg p$, а значит $q_{K[x] / (h_1(x))}$ анизотропна, а значит $h_1 | f_i$ для всех $i$, т. е. степень $f_i$ можно понизить.
+    \end{enumerate}
+\end{proof}
+ 
+Пусть $G$ --- свободная абелева группа с образующими $[a]$, где $a \in F^*$. Пусть $H$ подгруппая, породжённая следующим соотношениями:
+\begin{enumerate}[nosep, wide, label = \arabic*)]
+    \item $[1] + [-1] = 0$
+    \item $[ab^2] = [a]$
+    \item $[a] + [b] = [a + b] + [(a + b)ab]$
+\end{enumerate}
+Увтерждается, что $W(F) \simeq G / H$.
+
+Существование отображения $G / H \rightarrow W(F)$, устроеннного понятным образом, следует из того, что $H$ лежит в ядре $[a] \rightarrow \langle a \rangle$.
+
+В обратную сторону пусть $\langle a_1, a_2, \ldots, a_n \rangle \mapsto \sum [a_1] + [a_2] + \ldots + [a_n]$. Проверим корректность. Как мы знаем достаточно проверить, что, если $\langle a_1, a_2 \rangle \simeq \langle b_1, b_2 \rangle$, $[a_1] + [a_2] = [b_1] + [b_2]$.
+
+Пусть $b_1 = a_1x_1^2 + a_2x_2^2$, $b_2 = abc^2(a_1x_1^2 + a_2x_2^2)$, $x_1x_2 \neq 0$(иначе очевидно), тогда 
+
+$$[a_1] + [a_2] = [a_1x_1^2] + [a_2x_2^2] = [b_1] + [a_1a_2x_1^2x_2^2(a_1x_1^2 + a_2x_2^2)] = [b_1] + [b_2].$$
+
+Пусть $F$ --- поле с дискретным нормирование $v$, $\O_v$ --- кольцо нормирования, $\m_v$ --- максимальный идеал, $k = \O_v / \m_v$, $\pi$ --- локальный параметр. 
+
+Определим $\partial_\pi: W(F) \rightarrow W(k)$ ---  гомоморфизм групп. Если $a \in F^*$, $a = u \pi^n$, $u \in \O_v^*$, $\langle a \rangle \mapsto \langle u \rangle$ если $2 \nmid n$, 0 --- иначе.
+
+\begin{enumerate}[nosep, wide, label = \arabic*)]
+    \setcounter{enumi}{1}
+    \item $\partial_\pi \langle ab^2 \rangle = \partial_\pi \langle a \rangle$
+    \item $a = u \pi^n$, $b = u \pi^m$
+    \begin{enumerate}[nosep, wide, label = \arabic{enumi}\alph*)]
+        \item $n < m$. $\partial_\pi (a + b) = a$, $\partial_\pi (ab(a + b)) = \partial_\pi(b)$.
+        \item $n = m$. 
+        \begin{enumerate}
+            \item $\bar{u} + \bar{w} \neq 0$. Очевидно.
+            \item $\bar{u} = -\bar{w}$. $u + w = s \pi^r$, $\partial_\pi{s \pi^{r + n}} + \partial_\pi(uws \pi^{r + 2n}) = 0$.
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+Рассмотрим поле $F(x)$. Пусть $p$ --- неприводимый унитальный многочлен, $v_p$ --- соответсвующее нормирование. Тогда можно собрать $W(F(x)) \rightarrow \bigoplus W(F_p)$, ведь для любой рациональной функции почти все образы относитльено $\partial_p$ нулевые. Утверждается, что есть точная последовательность
+\begin{equation*}
+\begin{tikzcd}
+    0 \rar & W(F) \rar & W(F(x)) \rar & \bigoplus W(F_p) \rar & 0
+\end{tikzcd}
+\end{equation*}
 
 \end{document}
