@@ -6,6 +6,8 @@
 \usepackage{enumitem}
 \usepackage{array}
 
+\newenvironment{cd}{\begin{equation*}\begin{tikzcd}}{\end{tikzcd}\end{equation*}}
+
 \newcolumntype{C}{>{$}c<{$}}
 
 \newtheorem*{theorem}{Теорема}
@@ -24,6 +26,7 @@
 \DeclareMathOperator{\chr}{chr}
 \DeclareMathOperator{\disc}{disc}
 \DeclareMathOperator{\cnt}{Z}
+\DeclareMathOperator{\End}{End}
 
 \newcommand{\llangle}{\langle \hspace{-.5mm} \langle}
 \newcommand{\rrangle}{\rangle \hspace{-.5mm} \rangle}
@@ -322,5 +325,111 @@ $$[a_1] + [a_2] = [a_1x_1^2] + [a_2x_2^2] = [b_1] + [a_1a_2x_1^2x_2^2(a_1x_1^2 +
     0 \rar & W(F) \rar & W(F(x)) \rar & \bigoplus W(F_p) \rar & 0
 \end{tikzcd}
 \end{equation*}
+
+$F$ --- поле, $n \geq 2$, $\chr F \nmid n$, $\zeta_n \in F$, $a, b \in F^*$.
+
+\begin{definition}[Символьная алгебра]
+    $A = (a, b)_{\zeta_n} = \langle i, j| i^n = a, j^n = b, ij = \zeta_n ji \rangle$
+\end{definition}
+
+Базис --- $\{i^k j^s\}_{0 \leq k, s \leq n - 1}$, $\dim A = n^2$. Кроме того, $A$ --- центральная простая алгебра.
+
+\begin{theorem}
+    Пусть $A$ --- центральная простая алгебра, $\dim A < \infty$. $A \simeq M_k(D)$, $\dim D = m^2$, $D$ --- алгебра с делением.
+\end{theorem}
+
+Если $A$, $B$ --- конечномерные csa, то и $A \otimes_F B$ --- csa.
+
+$A \otimes A^{op} \simeq \End_F(A): a \otimes b \mapsto (x \mapsto axb)$.
+
+Введём на csa отношение эквиивалентности: $A \sim B$, если $A \otimes M_k(F) \simeq B \otimes M_l(F)$. Группа классов эквивалентности называется группой Брауэра.
+
+Пусть $(a, b) + (c, d) = (u, v) = (u, v) + M_2(F) = M_2(u, v)$. Пусть $C_1 = (a, b) \otimes (c, d)$, $C_2 = M_2(u, v)$, тогда $M_s(C_1) \simeq M_s(C_2)$, т. е. по теоереме Ведебёерна, $M_s(M_{r_1}(D_1)) \simeq M_s(M_{r_2}(D_2))$, т. е. $M_{sr_1}(D_1) \simeq M_{sr_2}(D_2)$, а значит $D_1 \simeq D_2$ и $r_1 = r_2$, т. е. $C_1 \simeq C_2$.
+
+\begin{enumerate}[nosep, wide]
+    \item $(a, b_1b_2)_{\zeta_n} = (a, b_1)_{\zeta_n} + (a, b_2)_{\zeta_n}$
+    \item $(a, 1 - a)_{\zeta_n}$ = 0
+\end{enumerate}
+
+$K_2(F) \rightarrow Br F: {a, b} \mapsto (a, b)_{\zeta_n}$
+
+Кроме того, можно определить $K_2(F) / n \simeq {}_nBrF$
+
+\begin{theorem}[Меркурьев--Суслин]
+    Этот гомоморфизм на самом деле изоморфизм.
+\end{theorem}
+
+Зафиксируем $\zeta_n$, $(a, b)_n := (a, b)_{\zeta_n}$. Пусть $D_1 \simeq (a_1, b_1)_n \otimes (c_1, d_1)_n$, $D_2 \simeq (a_2, b_2) \otimes (c_2, d_2)$, и пусть $D_2 - D_1 = Q$ --- символьная алгебра. Верно ли, что $D_1 \simeq S \otimes R_1$, $D_2 \simeq S \otimes R_2$, где все алгебры символьные? Ответ: нет.
+
+$(a_1, b_1) \otimes (a_2, b_2) \rightsquigarrow \langle a_1, b_1, -a_1b_1, -a_2, -b_2, a_2, b_2 \rangle$ (форма Алберта).
+
+Пусть $I^3(F) = 0$, $D_1, D_2$ --- бикватернионные, и $D_2 - D_1 = Q$. 
+
+$I_2 / I_3 (F) \leftrightarrow {}_2 Br(F)$
+
+$\varphi_2 - \varphi_1 - \pi \in I^3(F) = 0$
+
+$\varphi_2 \perp -\varphi_1 \simeq \pi \perp 4H$
+
+Выделяя по общему значению, получаем, что $\varphi_1 \simeq \tau \perp \rho_1$, $\varphi_2 \simeq \tau \perp \rho_2$, $\dim \tau = 4$.
+
+$\varphi_1 = \langle a_1, a_2, a_3, -a_1a_2a_3 \rangle + \langle -a_1a_2a_3, a_4, u_1, v_1 \rangle \leftrightarrow S + R_1$
+
+$\varphi_2 = \langle a_1, a_2, a_3, -a_1a_2a_3 \rangle + \langle -a_1a_2a_3, a_4, u_2, v_2 \rangle \leftrightarrow S + R_2$
+
+Так что $S \otimes R_1 \simeq D_1$, $S \otimes R_2 \simeq D_2$.
+
+Вернёмся к
+
+\begin{cd}
+    0 \rar & W(F) \rar & W(F(x)) \rar & \bigoplus W(F_\pi) \rar & 0
+\end{cd}
+
+Докажем сюръективность индукцией по степени $\pi$. Случай $\deg \pi = 1$ очеивден. Далее $\langle \pi h \rangle \mapsto \langle \bar{h} \rangle \oplus (\text{меньшие степени})$, так что по индукции побеждаем.
+
+Инъективность очевидна.
+
+Пусть для $d \geq 0$ $L_d \subset W(F(x))$, где $L_d$ порождена элементами вида $\langle g_1g_2 \ldots g_s \rangle$, где $\deg g_i \leq d$. $\cup L_d = W(F(x))$. Поймём чему равны факторы. Если $\deg \pi = d$, у нас есть гомоморфизм
+$$L_d / L_{d-1} \rightarrow W(F_\pi).$$
+Хотим понять, что $L_d / L_{d-1} \rightarrow  \bigoplus W(F_\pi)$ --- изоморфизм.
+
+\begin{lemma} \quad
+    \begin{enumerate}[nosep, wide, label = \arabic*)]
+        \item $L_d / L_{d - 1}$  порождается элементами $\langle \pi g_1 g_2 \ldots g_s \rangle$, где $\deg \pi = d$, $\deg g_i \leq d - 1$.
+        \item $\deg \pi = d$, $f$, $g_1, g_2, \ldots, g_s$ таковы, что $\deg f, \deg g_i \leq d - 1$, $f \equiv g_1 g_2 \ldots g_s \mod \pi$. Тогда $\pi f \equiv \pi g_1 g_2 \ldots g_s$.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}[nosep, wide, label = \arabic*)]
+        \item $\langle \pi_1 \pi_2 \ldots \pi_k g_1 g_2 \ldots g_s \rangle$. Докажем индукцией по $k$.
+        $$\pi_1 = \pi_2 + h, \deg h \leq d - 1$$
+        $$\langle \pi_2, h \rangle \simeq \langle \pi_1, \pi_1 \pi_2 h \rangle$$
+        Домножим обе части на $\pi_1 \pi_3 \ldots \pi_k g_1 g_2 \ldots g_s$.
+        $$\langle \pi_1 \pi_2 \ldots \pi_k g_1 g_2 \ldots g_s, \pi_1 \pi_3 \ldots \pi_k g_1 g_2 \ldots g_2h \rangle \simeq \langle \pi_3 \ldots \pi_k g_1 g_2 \ldots g_s, \pi_2 \pi_3 \ldots \pi_k g_1 g_2 \ldots g_s h \rangle$$
+        \item Докажем индукцией по $s$, $s = 1$ --- очевидно.
+        $$g_1 g_2 = \pi r + h, \deg h \leq d - 1$$
+        $$f \equiv h g_3 \ldots g_s \mod \pi$$
+        $$\langle \pi r, h \rangle \simeq \langle g_1 g_2, \pi r h g_1 g_2 \rangle$$
+        Домножаем на $\pi g_3 \ldots g_s$.
+        $$\langle r g_3 \ldots g_s, \pi h g_3 \ldots g_s \rangle \simeq \langle \pi g_1 g_2 \ldots g_s, rh g_1 \ldots g_s \rangle$$
+        $$\langle r g_3 \ldots g_s, \pi f \rangle \equiv \langle \pi g_1 g_2 \ldots g_s, rh g_1 \ldots g_s \rangle \mod L_{d - 1}$$
+    \end{enumerate}
+\end{proof}
+
+Рассмотрим гомоморфизм $\mu_\pi: W(F_\pi) \rightarrow L_d/L_{d - 1}: \langle \bar{f} \rangle \mapsto \langle \pi f \rangle$. Проверим корректность, используя задание $W$ образующими и соотношениями.
+
+\begin{enumerate}[nosep, wide, label = \arabic*)]
+    \item $\langle 1 \rangle + \langle -1 \rangle \mapsto 0$
+    \item $u = f$, $v = g$, $uv^2 = h$, тогда $\langle u v^2 \rangle - \langle u \rangle \mapsto \langle \pi h \rangle - \langle \pi f \rangle = \langle \pi f g^2 \rangle - \langle \pi f \rangle = 0$.
+    \item $\langle u, v \rangle - \langle u + v, uv(u + v) \rangle \mapsto 0$, аналогично.
+\end{enumerate}
+
+Осталось проверить, что построенные отображения взаимнообратны. Во одну сторону, по лемме, достаточно проверить, что $\langle \pi g_1 g_2 \ldots g_s \rangle$ переходит в себя, но это очевидно. В обратную сторону очевидно.
+
+На самом деле, последовательность расщепляется. $W(F(X)) \rightarrow W(F): \langle f \rangle \rightarrow \langle l(f) \rangle$ --- старший коэффициент. Итого,
+$$W(F(x)) \simeq W(F) \oplus \bigoplus W(F_\pi).$$
+\begin{cd}
+0 \rar & I^n(F) \rar & I^n(F(x)) \rar & \bigoplus I^{n - 1}(F_\pi) \rar & 0
+\end{cd}
 
 \end{document}
