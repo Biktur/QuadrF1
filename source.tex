@@ -7,6 +7,7 @@
 \usepackage{array}
 
 \newenvironment{cd}{\begin{equation*}\begin{tikzcd}}{\end{tikzcd}\end{equation*}}
+\newenvironment{enum}[2][\parindent]{\begin{enumerate}[nosep, wide, labelindent = #1, label = #2]}{\end{enumerate}}
 
 \newcolumntype{C}{>{$}c<{$}}
 
@@ -435,5 +436,70 @@ $$W(F(x)) \simeq W(F) \oplus \bigoplus W(F_\pi).$$
 \begin{theorem}[Арасона--Пфистера]
     $q$ --- анизатропная форма, $q \in I^n$, тогда $\dim q \geq 2^n$.
 \end{theorem}
+
+\begin{theorem}[Касселс--Пфистер]
+    $F$ --- поле, $q \simeq \langle a_1, a_2, \ldots, a_n \rangle$ --- форма над $F$, $p \in F[t]$, $p \in D(q_{F(t)})$. Тогда найдутся $s_1, s_2, \ldots, s_n \in F[t]$ такие, что $\sum a_i s_i^2$.
+\end{theorem}
+\begin{proof}
+    Если $q$ изотропна над $F$, $p = \left( \frac{p + 1}{2} \right)^2 + \left( \frac{p - 1}{2} \right)^2$.
+
+    $q' := \langle -p, a_1, a_2, \ldots, a_n \rangle$ изотропна, т. е. $q'(f) = -pf_0^2 + a_1 f_1^2 + \ldots + a_n f_n^2 = 0$, где $f_0 \neq 0$, $f_i \in F[t]$. Пусть степень $f_0$ минимальна, и пусть она ненулевая. Поделим $f_i$ на $f_0$ с остатком, и составим из частных и остатков вектора $g$ и $r$.
+
+    Найдём $\alpha, \beta \in F(t)$, т. ч. $B(\alpha f + \beta g, \alpha f + \beta g) := B_{q'}(\alpha f + \beta g, \alpha f + \beta g) = 0$.
+
+    $$2\alpha \beta B(f, g) + \beta^2 B(g, g) = 0$$
+
+    Возьмём $\alpha = B(g, g)$, $\beta = -2B(f, g)$, и пусть $h = \alpha f + \beta g$. Тогда $q'(h) = 0$ и $h_0 = B(g, g) f_0 - 2B(f, g) = B(f_0 g - 2f, g) = B(-f - r, \frac{f - r}{f_0})$. Т. е. $f_0 h_0 = B(-f - r, f - r) = B(r, r)$. $\deg B(r, r) < 2\deg f_0$, а значит $\deg h_0 < \deg f_0$. 
+\end{proof}
+
+\begin{corollary}
+    Пусть $q$ --- анизотропная форма, $a, b \in F^*$ и $ax^2 + b \in D(q_{F(x)})$. Тогда $\langle a, b \rangle \subset q$.
+\end{corollary}
+\begin{proof}
+    По предыдущей теореме $ax^2 + b = \sum c_i f_i^2$, значит $\deg f_i \leq 1$. Но тогда $ax^2 + b = x^2 q(\alpha) + x B(\alpha, \beta) + q(\beta)$, значит $\alpha$ и $\beta$ ортогональны и дают нужные значения.
+\end{proof}
+
+\begin{corollary}
+    Пусть $a_1, a_2, \ldots, a_n \in F^*$, $q$ анизотропна и $a_1x_1^2 + a_2x_2^2 + \ldots + a_nx_n^2 \in D(q_{F(x_1, x_2, \ldots, x_n)})$. Тогда $\langle a_1, a_2, \ldots, a_n \rangle \subset q$.
+\end{corollary}
+\begin{proof}
+    $b := a_2x_2^2 + \ldots a_nx_n^2$, тогда $a_1x_1^2 + b \in D(q_F(x_2, \ldots, x_n)(x_1))$. Значит $\langle a_1, b \rangle \subset q_{F(x_1, x_2, \ldots)}$. В частности $a_1$ значение $q$, ведь если $q \perp \langle -a_1 \rangle$ изотропна в поле чатсных, то она изотропна и в $F$. Т. е. $q \simeq \langle a_1, c_1, \ldots, c_m \rangle$ и $b \in D(\langle c_1, \ldots, c_m \rangle_{F(x_2, \ldots, x_n)})$, значит $\langle a_2, \ldots, a_n \rangle \subset \langle c_1, \ldots, c_m \rangle$.
+\end{proof}
+
+\begin{proposition}
+Пусть $\varphi$ --- форма, $1 \in D(\varphi)$, $\varphi = x_1^2 + \varphi'(x_2, \ldots, x_n)$.
+
+$$F(\varphi) = F(x_2, \ldots, x_n)(\sqrt{-\varphi'(x_2, \ldots, x_n)})$$
+
+И пусть $\psi$ анизотропна над $F$. Пусть $\psi_{F(\varphi)}$ гиперболична. Тогда $c \varphi \subset \psi$ для любого $c \in D(\psi)$. В частности $\dim \psi \geq \dim \varphi$. 
+\end{proposition}
+\begin{proof}
+    $$\psi_{F(x_2, \ldots, x_n)} \simeq \langle 1, \varphi' \rangle \otimes \rho$$
+    $$\varphi \langle 1, \varphi' \rangle \simeq \langle 1, \varphi' \rangle$$
+    $$\varphi \psi_{F(x_1, \ldots, x_n)} \simeq \psi_{F(x_1, \ldots, x_n)}$$
+    Значит $c\varphi(x_1, \ldots, x_n) \in D(\psi_{F(x_1, \ldots, x_n)})$, и, по предыдущей теореме, $c\varphi \subset \psi$.
+\end{proof}
+
+\begin{theorem}[Арасон--Пфистер]
+    $q$ --- анизотроная, $q \in I^n$. Тогда $\dim g \geq 2^n$.
+\end{theorem}
+\begin{proof}
+    $q = \sum_{i = 1}^m c_i \pi_i$, где $\pi_i$ --- $n$-кратные формы Пфистера. Докажем индукцией по $m$.
+
+    Перейдём к $F(\pi_1)$
+
+    \begin{enum}{\arabic*)}
+        \item $q_{F(\pi_1)}$ гиперболична. Тогда $c\pi_1 \subset q$
+        \item $(q_{F(\pi_1)})_{an} \in I^n(F(\pi_1))$, и можно воспользоваться индукцией.
+    \end{enum}
+
+    \begin{statement}
+        $\varphi$ --- форма кручения в группе Витта. Тогда найдётся $m$ такой, что $2^m \varphi = 0$.
+    \end{statement}
+    \begin{proof}
+        Упражнение
+    \end{proof}
+\end{proof}
+
 
 \end{document}
