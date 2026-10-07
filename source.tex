@@ -32,6 +32,7 @@
 \newcommand{\llangle}{\langle \hspace{-.5mm} \langle}
 \newcommand{\rrangle}{\rangle \hspace{-.5mm} \rangle}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\m}{\mathfrak{m}}
 
@@ -438,7 +439,7 @@ $$W(F(x)) \simeq W(F) \oplus \bigoplus W(F_\pi).$$
 \end{theorem}
 
 \begin{theorem}[Касселс--Пфистер]
-    $F$ --- поле, $q \simeq \langle a_1, a_2, \ldots, a_n \rangle$ --- форма над $F$, $p \in F[t]$, $p \in D(q_{F(t)})$. Тогда найдутся $s_1, s_2, \ldots, s_n \in F[t]$ такие, что $\sum a_i s_i^2$.
+    $F$ --- поле, $q \simeq \langle a_1, a_2, \ldots, a_n \rangle$ --- форма над $F$, $p \in F[t]$, $p \in D(q_{F(t)})$. Тогда найдутся $s_1, s_2, \ldots, s_n \in F[t]$ такие, что $p = \sum a_i s_i^2$.
 \end{theorem}
 \begin{proof}
     Если $q$ изотропна над $F$, $p = \left( \frac{p + 1}{2} \right)^2 + \left( \frac{p - 1}{2} \right)^2$.
@@ -501,5 +502,63 @@ $$F(\varphi) = F(x_2, \ldots, x_n)(\sqrt{-\varphi'(x_2, \ldots, x_n)})$$
     \end{proof}
 \end{proof}
 
+\begin{definition}
+    Форма $\varphi$ называется круглой, если $D(\varphi) = G(\varphi)$
+\end{definition}
+
+\begin{theorem}
+    Если $\sigma$ --- круглая форма, и $b \in F^*$, $\sigma \perp -b\sigma$ --- круглая.
+\end{theorem}
+\begin{proof}
+    Т. к. $1 \in D(\sigma)$, $G(\sigma\llangle b \rrangle) \subset D(\sigma\llangle b \rrangle)$.
+
+    В обратную сторону, пусть $c = s - bt$, где $s, t \in D(\sigma) \cap \{0\}$.
+    \begin{enum}{\arabic*)}
+        \item $s, t \in D(\sigma)$.
+        $\sigma \llangle b \rrangle = \sigma \perp -b\sigma \simeq s\sigma \perp -bt \sigma = \langle s, -bt \rangle \sigma \simeq \langle s - bt, -(s -bt)bst \rangle = c \langle 1, -bst \rangle \sigma \simeq c \sigma \perp -cbst\sigma \simeq c \sigma \perp -cb \sigma$.
+        \item $t = 0$, тогда $c = s \in G(\sigma)$.
+        \item $s = 0$, $c = -bt$. $-bt(\sigma \perp -b\sigma) \simeq -b\sigma \perp \sigma$.
+    \end{enum}
+\end{proof}
+
+\begin{corollary}
+    Любая форма Пфистера круглая.
+\end{corollary}
+
+\begin{corollary}
+    Любая изотропная форма Пфистера гиперболична.
+\end{corollary}
+\begin{proof}
+    Пусть $q$ --- изотропная форма Пфистера. Пусть $q = \varphi \perp -a\varphi$, можно считать, что $\varphi$ анизотропна, а значит $a \in D(\varphi)$, т. к. $a = \frac{\varphi(x)}{\varphi(y)}$, и $\varphi$ --- круглая, но тогда $\varphi \simeq a\varphi$, что равносильно тому, что $\varphi \perp -a\varphi$ гиперболична.
+\end{proof}
+
+\begin{definition}
+    Форма $q / F$ называется мультипликативной, если для любого $K / F$ $D(\varphi_K)$ --- группа.
+\end{definition}
+
+\begin{theorem}
+    Анизотропные мультипликативаные формы суть формы Пфистера.
+\end{theorem}
+\begin{proof}
+    Пусть $q$ мультпликативна, и пусть $\pi \subset q$ --- форма Пфистера максимальной кратности(такая есть, ведь $1 \in D(q)$). $q \simeq \pi \perp \langle c \rangle \perp \ldots$. $\pi(X) = \pi(x_1, x_2, \ldots)$, $c\pi(Y) = c\pi(y_1, y_2, \ldots)$. Рассмотрим $F(X, Y) / F$. $\pi(X) + c\pi(Y) = \pi(Y)(\frac{\pi(X)}{\pi(Y)} + c)$. $\pi(Y) \in D(q_{F(X, Y)})$, $\frac{\pi(X)}{\pi(Y)} + c \in D(q_{F(X, Y)})$, ведь $\pi$ мультипликативна. Получаем $\pi(X) + c \pi(Y) \in D(q_{F(x, Y)})$, значит $\pi \perp c\pi \subset q$.
+\end{proof}
+
+\begin{theorem}
+    Уровень поля равен степени двойки.
+\end{theorem}
+\begin{proof}
+    Пусть $n$ таково, что $2^n \leq s(F) < 2^{n - 1}$. $-1 \in D(\langle 1, 1, \ldots, 1 \rangle)$. Т. е. найдутся элементы такие, что $y_1^2 + y_2^2 + \ldots + y_{2^{n + 1}}^2 = 0$. Тогда БОО первая половина суммы не рвана нулю, $\frac{y_1^2 + y_2^2 + \ldots + y_{2^n}}{y_{2^n + 1}^2 + \ldots + y_{2^{n + 1}}^2} = -1 \in D(\llangle -1 \rrangle^n)$.
+\end{proof}
+
+Покажем, что любая степень двойки реализуется.
+
+Возьмем $\varphi = (2^n + 1)\langle 1 \rangle$. $F = \R(\varphi) = \R(x_1, x_2, \ldots, x_{2^n})(\sqrt{-(x_1^2 + \ldots + x_{2^n}^2)})$. Очевидно, $s(F) \leq 2^n$. Пусть $s(F) < 2^n$, тогда $2^n\langle 1 \rangle$ изотропна, а значит гиперболична, и $2^n \geq \dim \varphi = 2^n + 1$.
+
+\begin{theorem}
+    Если $q$ анизотропна, $q \subset I^n$, и $\dim q \simeq c\pi$
+\end{theorem}
+\begin{proof}
+    Домножим так, что $1 \in D(q)$. $q_{F(q)}$ гиперболическая. $q(X) q_{F(x)} \simeq q_{F(x)}$. Рассмотрим $K / F$, $q(X)q_{K(X)} \simeq q_{K(X)}$. Пусть $c \in D(q_{K})$. Тогда $cq_K \simeq q_K$. Значит $q_k$ круглая, в частонсти она мультипликативна, а значит $q$ --- форма Пфистера. 
+\end{proof}
 
 \end{document}
