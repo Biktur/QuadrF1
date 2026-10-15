@@ -25,6 +25,7 @@
 \newtheorem{problem}{Задача}
 
 \DeclareMathOperator{\chr}{chr}
+\DeclareMathOperator{\Br}{Br}
 \DeclareMathOperator{\disc}{disc}
 \DeclareMathOperator{\cnt}{Z}
 \DeclareMathOperator{\End}{End}
@@ -560,5 +561,46 @@ $$F(\varphi) = F(x_2, \ldots, x_n)(\sqrt{-\varphi'(x_2, \ldots, x_n)})$$
 \begin{proof}
     Домножим так, что $1 \in D(q)$. $q_{F(q)}$ гиперболическая. $q(X) q_{F(x)} \simeq q_{F(x)}$. Рассмотрим $K / F$, $q(X)q_{K(X)} \simeq q_{K(X)}$. Пусть $c \in D(q_{K})$. Тогда $cq_K \simeq q_K$. Значит $q_k$ круглая, в частонсти она мультипликативна, а значит $q$ --- форма Пфистера. 
 \end{proof}
+
+$$I^2/I^3(F) \xrightarrow{\sim} K_2(F) / 2 \xrightarrow{\sim} {}_2 \Br F$$
+
+Посмотрим на отображение между $I^2/I^3(F)$ и ${}_2 \Br F$,  обозначим его $c$.
+
+Пусть $\dim \varphi = 6$. Тогда $c(\varphi) = 0$ $\iff$ $\varphi = 0$, $c(\varphi) = Q$ $\iff$ $\varphi$ изотпропна но не гиперболична. Действительно, пусть $c(\varphi) = 0$. Найдётся $\lambda$, т. ч. $\lambda\varphi = \llangle c, d \rrangle - \llangle a, b \rrangle$, тогда $c(\lambda \varphi) = (a, b) + (c, d) = 0$, т. е. $(a, b) = (c, d)$, а значит $\varphi = 0$. Пусть теперь $c(\varphi) = Q$. Пусть $d \in F^*$, т. ч. $c(\varphi_{F(\sqrt{d})})= 0$. Т. е., если $\varphi$ анизотропна, то $\varphi = \llangle d \rrangle \tau$, т. е. $-1 = \det \varphi = -d$. Если $\varphi$ изотропна и не равна 0, $\varphi = H \perp \alpha \llangle u, \rrangle v$, значит $c(\varphi) = (u, v) = Q$.
+
+$\varphi = \langle a, b, -ab, -c, -d, cd \rangle$. Тогда $D = (a, b) \otimes (c, d)$ --- алгебра с делением тогда и только тогда, когда $\varphi$ анизотропна. Если $\varphi$ изотропна, $(a, b) \otimes (c, d) = M_2((u, v))$. В обратную сторону, пусть $(a, b) \otimes (c, d) = M_2(Q)$, тогда $\dim Q = 4$, надо понять, что $Q$ --- кватернионная, ведь тогда $(a, b) + (c, d) = (u, v)$.
+
+\begin{theorem}
+    $Q$ --- csa с делением, $\dim Q = 4$, тогда $Q$ кватернионная. Пусть $i \in Q \ F$, тогда $F \subsetneq F(i) \subsetneq Q$, а значит $\dim_F F(i) = 2$, $\dim_{F(i)} Q$, т. е. $i^2 = a \in F^*$. Расмотрим в $Q$ внутренний автоморфизм $f(x) = ixi^{-1}$, это инволюция, и, т. к. $x = \frac{x + f(x)}{2} + \frac{x - f(x)}{2}$, $Q = Q^+ \oplus Q^-$, причём $Q^- \neq 0$, ведь $Q$ --- центральная. Пусть тогда $j \in Q^- \neq 0$. $ij = -ji$, и $j^2 \in Q^+$. Но $j^2 + cj + b = 0$, т. е. $j^2 - b = -cj$, а значит $j^2 = b$, и $Q \simeq (a, b)$.
+\end{theorem}
+
+Какие размерности могут иметь анизотропные формы из $I^3$? Утверждается, что все кроме 10.
+
+8 достигается например в $k(x, y, z)$ на форме $\llangle x, y, z \rrangle$.
+
+12 --- пусть $\varphi = \langle a, b, -ab, -c, -d, cd \rangle$, где $a, b, c, d$ --- переменные, тогда $\llangle t \rrangle \varphi \in I^3$ --- анизотропная размерности 12. 
+
+14 --- $\llangle x, y, z \rrangle \perp -\llangle u, v, w \rrangle \in I^3$.
+
+16 --- $\llangle x, y, z \rrangle \perp t \llangle u, v, w \rrangle$.
+
+18 --- упражнение.
+
+Далее можно просто складывать.
+
+\begin{statement}
+    $\varphi \in I^3(F)$, $\dim \varphi = 10$, тогда $\varphi$ изотропна.
+\end{statement}
+\begin{proof}
+    $\varphi = \langle 1, -a, -b, abd \rangle \perp \psi$. $\det \psi = -d$.
+    \begin{enum}{\arabic*)}
+        \item Если $d \in (F^*)^2$, $c(\psi) = (a, b) + c(\varphi) = (a, b)$, значит $\psi$ изотропна.
+        \item $\det \psi_{F(\sqrt{d})} = -1$, значит $\psi_{F(\sqrt{d})} \in I^2(F(\sqrt{d}))$. $c(\psi_{F(\sqrt{d})}) = (a, b)$, тогда $\psi_{F(\sqrt{d})}$ изотропна, а значит $\psi \simeq \langle x, -xd \rangle \perp \tau$, $\det \tau = 1$, $c(\tau) = Q$. Значит $c(\langle 1, -a, -b, abd, x, -xd \rangle) + c(\tau) = 0$, и первая форма изотропна.
+    \end{enum}
+\end{proof}
+
+Пусть $\varphi \in I^2$ анизотропна, $\dim \varphi = 8$, и пусть $c(\varphi) = 0$. Тогда $c(\varphi) = \lambda\llangle a, b, c \rrangle$.
+
+Действительно, пусть $d \in F^*$, т. ч. $\varphi_{F(\sqrt{d})} = H \perp \psi_{F(\sqrt{d})}$, а значит, т. к. $c(\psi_{F(\sqrt{d})}) = 0$, $\psi = \llangle d \rrangle \otimes \tau$, т. е. $\varphi = \llangle d \rrangle(\langle x \rangle \perp \tau) = \llangle d \rrangle(\langle a_1, a_2, a_3, a_1a_2a_3 \rangle - \langle -a_1a_2a_3, a_4 \rangle)$, но, т. к. $c(\varphi) = c(\llangle d \rrangle \langle -a_1a_2a_3, a_4 \rangle) = 0$, $\varphi = \llangle d \rrangle\langle a_1, a_2, a_3, a_1a_2a_3 \rangle$.
 
 \end{document}
