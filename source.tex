@@ -603,4 +603,39 @@ $\varphi = \langle a, b, -ab, -c, -d, cd \rangle$. Тогда $D = (a, b) \otime
 
 Действительно, пусть $d \in F^*$, т. ч. $\varphi_{F(\sqrt{d})} = H \perp \psi_{F(\sqrt{d})}$, а значит, т. к. $c(\psi_{F(\sqrt{d})}) = 0$, $\psi = \llangle d \rrangle \otimes \tau$, т. е. $\varphi = \llangle d \rrangle(\langle x \rangle \perp \tau) = \llangle d \rrangle(\langle a_1, a_2, a_3, a_1a_2a_3 \rangle - \langle -a_1a_2a_3, a_4 \rangle)$, но, т. к. $c(\varphi) = c(\llangle d \rrangle \langle -a_1a_2a_3, a_4 \rangle) = 0$, $\varphi = \llangle d \rrangle\langle a_1, a_2, a_3, a_1a_2a_3 \rangle$.
 
+\begin{theorem}
+    Пусть $\dim \varphi = 8$, $\varphi \in I^2(F)$, и $c(\varphi)$ --- кватернионная алгебра. Тогда $\varphi \simeq \llangle e \rrangle \otimes \tau$.
+\end{theorem}
+\begin{proof}
+    Можно считать, что $\varphi$ анизотропна. Пусть $d \in F^*$ таков, что $\varphi_{F(\sqrt{d})}$ изотропна, тогда $\varphi \simeq \langle x, -xd \rangle \perp \psi$, а значит $c(\psi_F(\sqrt{d}))$ --- кватернионная алгебра над $F(\sqrt{d})$, значит $\psi_F(\sqrt{d})$ изотропна, и $\varphi \simeq \langle x, -xd, y, -yd \rangle \perp \rho$. Получаем, что $c(\varphi) = (d, -xy) + c(\rho) =: (d, -xy) + (a, b)$. Тогда, т. к. $\langle a, b, -ab, -d, xy, -dxy \rangle$ изотропна, найдётся $e \in D(\langle a, b, -ab \rangle) \cap D(\langle d, -xy, dxy\rangle)$. Пусть $e = au^2 + bv^2 - abw^2$, имеем $\llangle a, b \rrangle \simeq \llangle au^2 + bv^2, -ab \rrangle \simeq \llangle e, ab(au^2 + bv^2) \rrangle$, а значит $\langle x, -xd, y, -yd \rangle$ и $\rho$ делятся на $\llangle e \rrangle$.
+\end{proof}
+
+\begin{theorem}[Wordsworth, 1975]
+    $\dim \varphi_1 = \dim \varphi_2 = 4$, $\disc(\varphi_1) = \disc(\varphi_2) = d$, и $(\varphi_1)_{F(\sqrt{d})} \sim (\varphi_2)_{F(\sqrt{d})}$, тогда $\varphi_1 \sim \varphi_2$.
+\end{theorem}
+\begin{proof}
+    Все свойства в условии не зависят от домножения на константу, так что можем считать
+    $\varphi_1 \simeq \langle d, -u_1, -v_1, u_1v_1 \rangle$, $\varphi_2 \simeq \langle d, -u_2, -v_2, u_2v_2\rangle$. Тогда $(\varphi_1)_{F(\sqrt{d})} \simeq \llangle u_1, v_1 \rrangle$, $(\varphi_2)_{F(\sqrt{d})} \simeq \llangle u_2, v_2 \rrangle$, а значит $\llangle u_1, v_1 \rrangle_{F(\sqrt{d})} \simeq \llangle u_2, v_2 \rrangle_{F(\sqrt{d})}$, в частности $\langle u_1, v_1, -u_1v_1, -u_2, -v_2, u_2v_2 \rangle$ изотропна, получаем, что у $\langle u_1, v_1, -u_1 v_1 \rangle$ и $\langle u_2, v_2, -u_2 v_2 \rangle$ есть общее значение, значит $\varphi_1 \simeq \langle d, -a, -b_1, ab_1 \rangle$, $\varphi_2 \simeq \langle d, -a, -b_2, ab_2 \rangle$. Опять же $\llangle a, b_1 \rrangle_{F(\sqrt{d})} \simeq \llangle a, b_2 \rrangle_{F(\sqrt{d})}$, т. е. $\llangle a, b_1b_2 \rrangle \simeq \llangle d, u \rrangle$, $d = ax_1^2 + b_1 b_2 x_2^2 - ab_1 b_2 x_3^2$. Утверждается, что $\varphi_2 \simeq a(ax_1^2 - d) \varphi_1$(упражнение).
+\end{proof}
+
+\begin{lemma}
+    $\dim \psi \leq 10$, $\psi \in I^2(F)$, $c(\psi) = 0$, тогда $\psi \in I^3$.
+\end{lemma}
+\begin{proof}
+    Случаи $\dim \psi = 4, 6, 8$ были. Пусть $\dim \psi = 10$. $\psi \simeq \langle 1, -a, -b, abd \rangle \perp \tilde{\psi}$, аналогично несуществования анизотропной, $\psi \simeq \langle 1, -a, -b, abd, x, -xd \rangle \perp \tau$, значит первая форма изотропна, значит и $\psi$ изотропна. 
+\end{proof}
+
+\begin{theorem}
+    $(a_1, b_1) \otimes (c_1, d_1) \simeq (a_2, b_2) \otimes (c_2, d_2)$, $\varphi_i = \langle a_i, b_i, -a_ib_i, -c_i, -d_i, c_i d_i \rangle$, для $i = 1, 2$.
+    \begin{enum}{\roman*)}
+        \item $\varphi_1 \equiv \varphi_2 \mod I^3$.
+        \item $\varphi_1 \sim \varphi_2$.
+    \end{enum}
+\end{theorem}
+\begin{proof}
+    Если верно первое утверждение, можно взять $\alpha$, т. ч. $\varphi_1 - \alpha \varphi_2 \in I^3$, $\dim(\varphi_1 \perp -\alpha \varphi_2) = 8$, а значит $\varphi_1 - \alpha \varphi_2 \simeq \pi$, т. е. $\varphi_1 \perp -\pi \simeq \alpha \varphi_2 \perp 4H$. Тогда $\varphi$ и $\pi$ имеют общую подформу размерности $4$. Пусть $\varphi \simeq \tau \perp \rho$, $\pi \simeq \tau \perp \tau_1$. Пусть $d = \det \tau$, тогда $\pi_F(\sqrt{d}) \simeq \tau_F(\sqrt{d}) \perp {\tau_1}_F(\sqrt{d})$. Тогда $0 = c(\pi_F(\sqrt{d})) = c(\tau_F(\sqrt{d})) + c({\tau_1}_F(\sqrt{d}))$, значит $\tau_F(\sqrt{d}) \sim {\tau_1}_F(\sqrt{d})$, значит $\tau \sim \tau_1$, т. е. $\pi \simeq \tau \perp -u\tau$. $\alpha \varphi_2 \simeq \rho \perp u\tau$, или же $\alpha u \varphi_2 \simeq u\rho \perp \tau$, а значит $\varphi_1 - \alpha u \varphi_2 = \rho - u\rho = 0$, по теореме Арасона--Пфистера.
+
+    Докажем первое утверждение. $\dim (\varphi_1 \perp -\alpha\varphi_2)_{an} \leq 10$ и $c(\varphi_1 -\alpha\varphi_2) = 0$, так что $\varphi_1 -\alpha\varphi_2 \in I^3$.
+\end{proof}
+
 \end{document}
