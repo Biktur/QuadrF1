@@ -3,6 +3,7 @@
 \usepackage[english, russian]{babel}
 \usepackage{mathtools, amssymb, amsfonts, amsthm}
 \usepackage{tikz-cd}
+\usetikzlibrary{babel}
 \usepackage{enumitem}
 \usepackage{array}
 
@@ -637,5 +638,80 @@ $\varphi = \langle a, b, -ab, -c, -d, cd \rangle$. Тогда $D = (a, b) \otime
 
     Докажем первое утверждение. $\dim (\varphi_1 \perp -\alpha\varphi_2)_{an} \leq 10$ и $c(\varphi_1 -\alpha\varphi_2) = 0$, так что $\varphi_1 -\alpha\varphi_2 \in I^3$.
 \end{proof}
+
+\begin{definition}
+    Формы
+    $$\llangle a_1, a_2, \ldots, a_m \rrangle \simeq \llangle b_1, b_2, \ldots, n_n$$
+    называются просто $P$-эквивалентными, если $a_k = b_k$ для всех, кроме $i \neq j$, причём $\llangle a_i, a_j \rrangle \simeq \llangle b_i, b_j \rrangle$.
+\end{definition}
+
+\begin{definition}
+    Формы
+    $$\llangle a_1, a_2, \ldots, a_m \rrangle \approx \llangle b_1, b_2, \ldots, n_n$$
+    называются $P$-эквивалентными, если они встраиваются в цепочку где соседние формы просто $P$-эквивалентны. 
+\end{definition}
+
+\begin{theorem}
+    $\varphi = \llangle a_1, \ldots, a_n \rrangle$, $b \in D(\varphi')$, где $\varphi = \langle 1 \rangle \perp \varphi'$. Тогда $\varphi \approx \psi = \llangle -b, \ldots \rrangle$.
+\end{theorem}
+\begin{proof}
+    Докажем по индукции. Случай $n = 1$ очевиден. Пусть теперь, $\tau = \llangle a_1, a_3, \ldots, a_{n - 1} \rrangle$, тогда $\varphi = \tau \perp -a\tau$. $b = x - a_n y$, где $x \in D(\tau') \cup \{0\}$, $y \in D(\tau) \cup \{0\}$.
+    \begin{lemma}
+        $y \neq 0$, $\llangle a_1, \ldots, a_n \rrangle \approx \llangle a_1, \ldots, a_n y \rrangle$.
+    \end{lemma}
+    \begin{proof}
+        $y = t^2 + y_0$, где $y_0 \in D(\tau')$.
+        $$\varphi \approx \llangle -y_0, \ldots, a_n \rrangle,$$
+        по индукции, но $\llangle -y_0, a_n \rrangle = \llangle -y_0, a_n y \rrangle$, так что 
+        $$\llangle -y_0, \ldots, a_n \rrangle \approx \llangle -y_0, \ldots, a_n y \rrangle \approx \llangle a_1, \ldots, a_n y \rrangle$$
+    \end{proof}
+    Итого,
+    $\tau \approx \llangle -x, d_2, \ldots, d_{n - 1} \rrangle$, $\varphi \approx \llangle -x, d_2, \ldots, d_{n - 1}, a_n \rrangle \approx \llangle -x, d_2, \ldots, d_{n - 1}, a_ny \rrangle \approx \llangle -x + a_n y, \ldots \rrangle$.
+\end{proof}
+
+\begin{corollary}
+    Изотропная форма Пфистера гиперболична.
+\end{corollary}
+
+\begin{theorem}
+    $\tau = \llangle b_1, \ldots, b_s \rrangle$, $\gamma = \llangle d_1, \ldots, d_s \rrangle$, $r \geq 0$, $s \geq 1$, $e \in D(\tau \gamma')$. Тогда $\tau \gamma \approx \tau \llangle e \rrangle \otimes$.
+\end{theorem}
+\begin{proof}
+    Докажем индукцией по $s$. При $s = 1$, $e \in D(-d_1 \tau)$, $e = -d_1 x$, тогда $\tau\llangle d_1 \rrangle \approx \tau \llangle d_1 x \rrangle$, по лемме из предыдыущей теоремы.
+    $\sigma = \llangle d_1, d_2, \ldots, d_{s - 1} \rrangle$. $\gamma = \sigma \perp -d_s \sigma$, $\tau\gamma' = \tau\sigma' \perp -d_s \tau\sigma$, $e = y - d_s x$, $y \in D(\tau \sigma') \cup \{0 \}$, $x \in D(\tau \sigma) \cup \{0\}$.
+    \begin{enum}{\arabic*)}
+        \item $xy \neq 0$.
+        $$\tau \gamma = \llangle b_1, \ldots b_r, d_1, \ldots d_s \rrangle \approx \llangle b_1, \ldots, b_r, d_1, \ldots, d_sx \rrangle \approx \llangle b_1, \ldots, b_r, -y, \ldots, d_s x \rrangle \approx \llangle b_1, \ldots, b_r, -e, \ldots \rrangle$$.
+        \item Упражнение.
+    \end{enum}
+\end{proof}
+
+\begin{theorem}
+    $\varphi, \psi \in P_n$, $\varphi \simeq \psi$. Тогда $\varphi \approx \psi$.
+\end{theorem}
+\begin{proof}
+    $\psi = \llangle b_1, \ldots, b_n \rrangle$. Пусть $\varphi \approx \llangle b_1, \ldots, b_r, c_{r + 1}, \ldots, c_n \rrangle =: \tau \gamma$, поймём, что $\varphi \approx \llangle b_1, \ldots, b_r, b_{r + 1}, \ldots \rrangle$.
+    
+    $\varphi = \tau \gamma \simeq \tau \beta = \psi$, т. е. $\tau \gamma' \simeq \tau \beta'$. $-b_{r + 1} \in D(\beta') \subset D(\tau\beta') = D(\tau\gamma')$, пользуясь предыдущей теоремой, завершаем доказательство.
+\end{proof}
+
+Пусть $L / K$ --- конечное расширение. У нас уже есть $W(F) \xrightarrow{res} W(L)$. Построем отображение $W(L) \rightarrow W(F)$.
+
+Пусть $0 \neq s: L \rightarrow F$ --- $F$-линейное отображение.
+
+Пусть $V \xrightarrow{q} L$ --- квадратичная форма на $V$. Тогда $s \circ q$ --- квадратичная форма, будем обозначать её $s_*(q)$, $s_*$ будем называть трнсфером.
+
+$0 \neq v \in V$, тогда найдётся $u \in V$, т. ч. $0 \neq q(u, v)$. Тогда, для какого-то $x$, $s(x(q(u, v))) \neq 0$, значит $s_*(q)(u, vx) \neq 0$. Так что регулярные переходят в регулярные, а значит мы полуаем отображение между кольцами Витта (гиперболичные очевидно переходят в нулевые).
+
+Пусть $L = F(\sqrt{d})$, $s: L \rightarrow F: 1 \mapsto 0, \sqrt{d} \mapsto 1$. $\langle \alpha + \beta\sqrt{d} \rangle$. $s((\alpha + \beta \sqrt{d})(x + y \sqrt{d})) = \beta(x^2 + dy^2) + 2\alpha xy$, а значит $s_*(\alpha + \beta\sqrt{d}) = \langle \beta, - \beta(\alpha^2 - d \beta^2) \rangle$, при $\beta \neq 0$, иначе форма гиперболична.
+
+\begin{theorem}
+    Пусть $L = F(\sqrt{d})$. Тогда треугольник
+    \begin{cd}
+        W(F) \ar[rr, "res"] & & W(L) \ar[dl, "s_*"] \\
+        & W(F) \ar[ul, "\llangle d \rrangle"]
+    \end{cd}
+    коммутирует и точен.
+\end{theorem}
 
 \end{document}
